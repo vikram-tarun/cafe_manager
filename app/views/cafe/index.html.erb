@@ -1,0 +1,31 @@
+<section class = "AddMenuSection">
+
+  <h2 class = "AddMenu-Title"> Add Menus: </h2>
+
+  <%= form_with(url: "/menu", method: "post", class: "AddMenu") do %>
+    <%= text_field_tag 'name', nil, class: "AddMenu-Name", placeholder: "Name of the menu" %>
+    <%= submit_tag "Add", class: "AddMenu-Button"%>
+  <% end %>
+
+</section>
+
+<article class = "MenuSection">
+
+  <h2 class = "MenuSection-Title"> Menus Available: </h2>
+
+  <table class = "MenuSection-Items">
+
+    <tr class = "Menu">
+      <th class = "MenuTable-Head"> Id </th>
+      <th class = "MenuTable-Head"> Name</th>
+    </tr>
+    <% Menu.all.each do |menu| %>
+      <tr class = "Menu">
+        <td class = "Menu-Id"> <%= menu.id %> </td>
+        <td class = "Menu-Name"> <%= link_to "#{menu.name}", "/menu/#{menu.id}" %> </td>
+      </li>
+    <% end %>
+
+  </table>
+
+</article>

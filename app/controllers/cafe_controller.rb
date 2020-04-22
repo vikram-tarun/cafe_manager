@@ -1,5 +1,5 @@
 class CafeController < ApplicationController
   def index
-    render plain: "CAFE"
+    @menu = Menu.all
   end
 end
