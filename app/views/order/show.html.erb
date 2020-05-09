@@ -1,0 +1,46 @@
+<section class = "UserOrderPage">
+
+  <% if @current_user.role == "owner" || @current_user.role == "billing clerk"%>
+    <section class = "UserOrderPage-Head">
+      <h3 class = "UserOrderPage-UserTitle"> User Name: </h3>
+      <p class = "UserOrderPage-UserName"> <%= User.find(@order.user_id).name %> </p>
+    </section>
+  <% end %>
+
+  <h3 class = "OrderItems-Head"> Order Items: </h3>
+
+  <table class = "OrderItems">
+
+    <tr class = "OrderItem">
+      <th class = "Item-Head"> Name </th>
+      <th class = "Item-Head"> Quantity </th>
+      <th class = "Item-Head"> Price </th>
+    </tr>
+
+    <% @order.order_items.each do |item|%>
+      <tr class = "OrderItem">
+        <td class = "Item-Name"> <%= item.menu_item_name%> </td>
+        <td class = "Item-Quantity"> <%= item.quantity %> </td>
+        <td class = "Item-Price">  <%= item.menu_item_price * item.quantity%> </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <section class  = "OrderTotalPrice">
+    <h3 class = "OrderTotalPrice-Head">Total Price: </h3>
+    <p class = "OrderTotalPrice-Price"> <%= @order.total_amount %> </p>
+  </section>
+
+  <h3 class = "UserOrderPage-DeliveredTitle"> Delivery Status: </h3>
+  <% if @order.delivered_at == nil%>
+    <p class = "UserOrderPage-DeliveredStatus"> Yet to be Delivered </p>
+    <% unless @current_user.role == "user" %>
+      <section class = DeliverOrder>
+        <%= button_to("Deliver Order", order_path(@order.id), method: "put", class: "DeliverOrder-Button") %>
+      </section>
+    <% end %>
+  <% else %>
+    <p class = "UserOrderPage-DeliveredStatus"> Delivered on <%= @order.delivered_at.strftime("%B %e, %Y at %I:%M %p")%> </p>
+  <% end %>
+
+</section>

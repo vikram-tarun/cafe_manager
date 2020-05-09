@@ -1,0 +1,21 @@
+<section class = "UserSign_Up_In">
+
+  <div class = "PageTitle-User">
+    <p> Welcome new customer! </p>
+  </div>
+
+  <div class = "UserSignUp-Credentials">
+    <%= form_with url: users_path do |form| %>
+
+      <p class = "Credentials">Name: </p>
+      <%= form.text_field :name, class: "Credentials-field"%>
+
+      <p class = "Credentials">Password: </p>
+      <%= form.password_field :password, class: "Credentials-field"%>
+
+      <%= form.submit "Signup", class: "Credentials-submit" %>
+
+    <% end %>
+  </div>
+
+</section>

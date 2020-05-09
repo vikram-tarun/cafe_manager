@@ -1,55 +1,75 @@
-<section class = "MenuPage-Head">
+<section class = "MenuPage">
+  <section class = "MenuPage-Head">
 
-  <h2 class = "MenuPageTitle"> Menu name:  </h2>
-  <h3 class = "MenuPage-Name"> <%= @menu.name %> </h3>
-
-</section>
-
-<section class = "MenuPage-Main">
-
-  <article class = "MenuItemsSection">
-
-    <h3 class = "MenuItems-Head"> Menu Items: </h3>
-
-    <table class = "MenuItems">
-
-      <tr class = "MenuItem">
-        <th class = "Item-Head"> Name </th>
-        <th class = "Item-Head"> Description </th>
-        <th class = "Item-Head"> Price </th>
-      </tr>
-      <% @menu.menu_items.each do |menu_item| %>
-        <tr class = "MenuItem">
-          <td class = "Item-Name"> <%= menu_item.name %> </td>
-          <td class = "Item-Description"> <%= menu_item.description %> </td>
-          <td class = "Item-Price"> <%= menu_item.price %> </td>
-          <%= form_with(url: "/menu_items/#{menu_item.id}", method: "delete", name: "#{@menu.id}") do  %>
-            <td class = "Item-Delete"><%= image_submit_tag("delete.svg", class: "MenuItem-deletebox") %> </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-
-  </article>
-
-  <section class = "AddMenuItemsSection">
-
-    <h3 class = "AddMenuItemsSection-Title"> Add Menu Items: </h3>
-
-    <%= form_with( url: "/menu/#{@menu.id}", method: "put") do |form| %>
-
-      <p class = "MenuItem-Tag">Item Name: </p>
-      <%= form.text_field :name, class: "MenuItem-Addfield", placeholder: "Name of the item" %>
-
-      <p class = "MenuItem-Tag">Price: </p>
-      <%= form.number_field :price, class: "MenuItem-Addfield", placeholder: "Price of the item"%>
-
-      <p class = "MenuItem-Tag">Description: </p>
-      <%= form.text_area :description, class: "MenuItem-Addfield", placeholder: "Description of the item", size: "32*2"%>
-
-      <%= form.submit "Add", class: "AddItem-Button" %>
-    <% end %>
+    <h2 class = "MenuPageTitle"> Menu name:  </h2>
+    <h3 class = "MenuPage-Name"> <%= @menu.name %> </h3>
 
   </section>
 
-</section>
+  <section class = "MenuPage-Main">
+
+      <section class = "AlterMenuSection">
+
+      <h3 class = "AlterMenuSection-Title"> Alter Menu: </h3>
+
+      <p class = "AlterMenu-Tag">Rename Menu: </p>
+      <%= form_with(url: "/menu/#{@menu.id}", method: "put", class: "RenameMenu") do %>
+        <%= text_field_tag 'name', nil, class: "RenameMenu-Name", placeholder: "Name of the menu" %>
+        <%= submit_tag "Rename", class: "RenameMenu-Button"%>
+      <% end %>
+
+      <p class = "AlterMenu-Tag">Delete Menu: </p>
+      <%= form_with(url: "/menu/#{@menu.id}", method: "delete", class: "DeleteMenu") do %>
+        <%= submit_tag "Delete", class: "DeleteMenu-Button"%>
+      <% end %>
+
+    </section>
+
+    <article class = "MenuItemsSection">
+
+      <h3 class = "MenuItems-Head"> Menu Items: </h3>
+
+      <table class = "MenuItems">
+
+        <tr class = "MenuItem">
+          <th class = "Item-Head"> Name </th>
+          <th class = "Item-Head"> Price </th>
+        </tr>
+
+        <% @menu.menu_items.each do |menu_item| %>
+          <tr class = "MenuItem">
+            <td class = "Item-Name"> <%= menu_item.name %> </td>
+            <td class = "Item-Price"> <%= menu_item.price %> </td>
+            <td class = "Item-Link"> <%= link_to "view", "/menu_items/#{menu_item.id}" %> </td>
+            <%= form_with(url: "/menu_items/#{menu_item.id}", method: "delete", name: "#{@menu.id}") do  %>
+              <td class = "Item-Delete"><%= image_submit_tag("delete.svg", class: "MenuItem-deletebox") %> </td>
+            <% end %>
+          </tr>
+        <% end %>
+
+      </table>
+
+    </article>
+
+    <section class = "AddMenuItemsSection">
+
+      <h3 class = "AddMenuItemsSection-Title"> Add Menu Items: </h3>
+
+      <%= form_with( url: "/menu_items", method: "post") do |form| %>
+
+        <%= hidden_field_tag "menu_id", "#{@menu.id}"%>
+        <p class = "MenuItem-Tag">Item Name: </p>
+        <%= form.text_field :name, class: "MenuItem-Addfield", placeholder: "Name of the item" %>
+
+        <p class = "MenuItem-Tag">Price: </p>
+        <%= form.number_field :price, class: "MenuItem-Addfield", placeholder: "Price of the item"%>
+
+        <p class = "MenuItem-Tag">Description: </p>
+        <%= form.text_area :description, class: "MenuItem-Addfield", placeholder: "Description of the item", size: "32*2"%>
+
+        <%= form.submit "Add", class: "AddItem-Button" %>
+      <% end %>
+
+    </section>
+
+  </section>

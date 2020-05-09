@@ -1,0 +1,28 @@
+<section class = "MyOrderPage">
+
+  <h2 class = "MyOrderPage-Title"> My Orders: </h3>
+
+  <%if @orders == nil || @pending_orders == [] %>
+    <p class = MyOrderpage-content> No Orders </p>
+  <% else %>
+    <table class = "Orders">
+
+      <tr class = "Order">
+        <th class = "Order-Head"> Order Id </th>
+        <th class = "Order-Head"> Order Date & Time </th>
+        <th class = "Order-Head"> Delivery Status </th>
+      </tr>
+
+      <% @orders.each do |order|%>
+        <tr class = "Order">
+          <td class = "Order-Id"> <%= order.id %> </td>
+          <td class = "Order-Timestamp"> <%= order.date.strftime("%B %e, %Y at %I:%M %p") %> </td>
+          <td class = "Order-DeliveryStatus"> <%= order.delivered_at == nil ? "Yet to be Delivered" : "Delivered" %> </td>
+          <td class = "Order-View"> <%= link_to "view", order_path(order.id), class: "OrderView-link" %> </td>
+        </tr>
+      <% end %>
+
+    </table>
+  <% end  %>
+
+</section>

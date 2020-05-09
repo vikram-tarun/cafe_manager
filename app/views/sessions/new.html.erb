@@ -1,0 +1,21 @@
+<section class = "UserSign_Up_In">
+
+  <div class = "PageTitle-Session">
+    <p> SignIn </p>
+  </div>
+
+  <div class = "UserSignIn-Credentials">
+    <%= form_with url: sessions_path do |form| %>
+
+      <p class = "Credentials">Name: </p>
+      <%= form.text_field :name, class: "Credentials-field"%>
+
+      <p class = "Credentials">Password: </p>
+      <%= form.password_field :password, class: "Credentials-field"%>
+
+      <%= form.submit "SignIn", class: "Credentials-submit" %>
+
+    <% end %>
+  </div>
+
+</section>

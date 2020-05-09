@@ -1,31 +1,113 @@
-<section class = "AddMenuSection">
+<section class = "CafeMainPage">
+  <% if @user_role == "owner"%>
+    <section class = "AddMenuSection">
 
-  <h2 class = "AddMenu-Title"> Add Menus: </h2>
+      <h2 class = "AddMenu-Title"> Add Menus: </h2>
 
-  <%= form_with(url: "/menu", method: "post", class: "AddMenu") do %>
-    <%= text_field_tag 'name', nil, class: "AddMenu-Name", placeholder: "Name of the menu" %>
-    <%= submit_tag "Add", class: "AddMenu-Button"%>
+      <%= form_with(url: "/menu", method: "post", class: "AddMenu") do %>
+        <%= text_field_tag 'name', nil, class: "AddMenu-Name", placeholder: "Name of the menu" %>
+        <%= submit_tag "Add", class: "AddMenu-Button"%>
+      <% end %>
+
+      <article class = "MenuSection">
+
+        <h2 class = "MenuSection-Title"> Menus Available: </h2>
+
+        <table class = "MenuSection-Items">
+
+          <tr class = "Menu">
+            <th class = "MenuTable-Head"> Id </th>
+            <th class = "MenuTable-Head"> Name</th>
+          </tr>
+          <% Menu.order('id').each do |menu| %>
+            <tr class = "Menu">
+              <td class = "Menu-Id"> <%= menu.id %> </td>
+              <td class = "Menu-Name"> <%= menu.name %> </td>
+              <td class = "Menu-Link"> <%= link_to "view", "/menu/#{menu.id}", class: "Menu-NameLink" %> </td>
+            </li>
+          <% end %>
+
+        </table>
+
+      </article>
+
+    </section>
   <% end %>
 
-</section>
+  <section class = "ActiveMenuSection">
 
-<article class = "MenuSection">
-
-  <h2 class = "MenuSection-Title"> Menus Available: </h2>
-
-  <table class = "MenuSection-Items">
-
-    <tr class = "Menu">
-      <th class = "MenuTable-Head"> Id </th>
-      <th class = "MenuTable-Head"> Name</th>
-    </tr>
-    <% Menu.all.each do |menu| %>
-      <tr class = "Menu">
-        <td class = "Menu-Id"> <%= menu.id %> </td>
-        <td class = "Menu-Name"> <%= link_to "#{menu.name}", "/menu/#{menu.id}" %> </td>
-      </li>
+    <% if @user_role == "user" %>
+      <h2 class = "ActiveMenu-Title"> Items Available: </h2>
+    <% else %>
+      <h2 class = "ActiveMenu-Title"> Active Menu: </h2>
     <% end %>
 
-  </table>
+    <% if @user_role == "owner"%>
+      <%=form_with( url: "/cafe", method: "post") do %>
+        <%= select_tag "active_menu", options_from_collection_for_select(@menu, "id", "name"), prompt: "Select Active Menu", class: "ActiveMenu-Dropdown", onchange: "this.form.submit()" %>
+      <% end %>
+    <% end %>
 
-</article>
+    <% if @active_menu != nil  %>
+      <table class = "MenuItems">
+
+        <tr class = "MenuItem">
+          <th class = "Item-Head"> Name </th>
+          <th class = "Item-Head"> Price </th>
+        </tr>
+
+        <% @active_menu.menu_items.each do |menu_item| %>
+          <tr class = "MenuItem">
+            <td class = "Item-Name"> <%= menu_item.name %> </td>
+            <td class = "Item-Price"> <%= menu_item.price %> </td>
+            <td class = "Item-Link"> <%= link_to "view", "/menu_items/#{menu_item.id}", class: "Item-NameLink" %> </td>
+          </tr>
+        <% end %>
+
+      </table>
+    <% end %>
+
+  </section>
+
+  <section class = "CartSection">
+
+    <% if @user_role == "user" %>
+      <h2 class = "CartSection-Title"> My Cart: </h2>
+    <% else %>
+      <h2 class = "CartSection-Title"> Walk-In Customer Cart: </h2>
+    <% end %>
+
+    <table class = "CartItems">
+
+      <tr class = "CartItem">
+        <th class = "Item-Head"> Name </th>
+        <th class = "Item-Head"> Qty </th>
+        <th class = "Item-Head">  Price </th>
+      </tr>
+
+      <% total_price = 0 %>
+      <% @cart.keys.each do |id|%>
+        <% cart_item = @cart[id][0] %>
+        <tr class = "CartItem">
+          <td class = "Item-Name"> <%= cart_item["name"] %> </td>
+          <td class = "Item-Quantity"> <%= @cart[id][1] %> </td>
+          <td class = "Item-Price">  <%= cart_item["price"] * @cart[id][1] %> </td>
+          <td class = "Item-Delete">
+            <%= form_with(url: "/menu_items/#{cart_item["id"]}/cart", method: "delete") do  %>
+              <%= image_submit_tag("delete.svg", class: "CartItem-deletebox") %>
+            <% end %>
+          </td>
+        </tr>
+        <% total_price += cart_item["price"] * @cart[id][1] %>
+      <% end %>
+    </table>
+
+    <section class  = "CartTotalPrice">
+      <h3 class = "CartTotalPrice-Head">Total Price: </h3>
+      <p class = "CartTotalPrice-Price"> <%= total_price %> </p>
+    </Section>
+
+    <%= button_to("Place Order", "/order", method: "post", class: "PlaceOrder-Button") %>
+  </section>
+
+</section>

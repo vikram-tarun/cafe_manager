@@ -1,0 +1,75 @@
+<section class = MenuItemPage>
+  <section class = "MenuItemPage-Head">
+
+    <h2 class = "MenuItemPage-Title"> MenuItem:  </h2>
+    <h3 class = "MenuItemPage-Name"> <%= @menu_item.name %> </h3>
+
+  </section>
+
+  <section class = "MenuItemPage-Main">
+    <section class = "MenuItemPage-Item">
+
+      <h3 class = "MenuItemDetails-Title"> Details: </h3>
+
+      <section class = "MenuItemDetails-Item">
+        <p class = "MenuItemDetails-Tag">Name: </p>
+        <p class = "MenuItemDetails-Data"> <%= @menu_item.name %> </p>
+      </section>
+
+      <section class = "MenuItemDetails-Item">
+        <p class = "MenuItemDetails-Tag">Price: </p>
+        <p class = "MenuItemDetails-Data"> Rs.<%= @menu_item.price %>/- </p>
+      </section>
+
+      <section class = "MenuItemDetails-Item">
+        <p class = "MenuItemDetails-Tag">Description: </p>
+        <p class = "MenuItemDetails-Data"> <%= @menu_item.description %> </p>
+      </section>
+
+      <section class = "MenuItemDetails-Buttons">
+        <% unless @cart.include?(@menu_item) %>
+          <%= form_with(url: "/menu_items/#{@menu_item.id}/cart", method: "post", class: "Cart-Add") do %>
+            <%= select_tag "quantity", options_for_select([1,2,3,4,5,6,7,8,9,10]), prompt: "Qty. ", class: "CartAdd-Dropdown" %>
+            <%= submit_tag "Add to Cart", class: "AddToCart-Button"%>
+          <% end %>
+        <% else %>
+          <%= button_to("Remove from Cart",  "/menu_items/#{@menu_item.id}/cart", method: "delete", class: "RemoveFromCart-Button") %>
+        <% end %>
+      </section>
+
+    </section>
+
+    <% if @user_role == "owner"%>
+      <section class = "AlterMenuItemSection">
+
+        <h3 class = "AlterMenuItemSection-Title"> Alter MenuItem: </h3>
+
+        <%= form_with(url: "/menu_items/#{@menu_item.id}", method: "put", class: "RenameMenuItem") do |form|%>
+          <p class = "AlterMenuItem-Tag">Change Name: </p>
+          <section class = "AlterMenuItem-Item">
+            <%= form.text_field :name, class: "AlterMenuItem-field", placeholder: "Name of the item" %>
+            <%= submit_tag "Change", class: "AlterMenuItem-Button"%>
+          </section>
+
+          <p class = "AlterMenuItem-Tag">Change Price: </p>
+          <section class = "AlterMenuItem-Item">
+            <%= form.number_field :price, class: "AlterMenuItem-field", placeholder: "Price of the item"%>
+            <%= submit_tag "Change", class: "AlterMenuItem-Button"%>
+          </section>
+
+          <p class = "AlterMenuItem-Tag">Change Description: </p>
+          <section class = "AlterMenuItem-Item">
+            <%= form.text_area :description, class: "AlterMenuItem-field", placeholder: "Description of the item", size: "32*2"%>
+            <%= submit_tag "Change", class: "AlterMenuItem-Button"%>
+          </section>
+        <% end %>
+
+        <p class = "AlterMenuItem-Tag">Delete MenuItem: </p>
+        <%= form_with(url: "/menu_items/#{@menu_item.id}", method: "delete", class: "DeleteMenuItem") do %>
+          <%= submit_tag "Delete", class: "DeleteMenuItem-Button"%>
+        <% end %>
+
+      </section>
+    <% end %>
+  </section>
+</section>

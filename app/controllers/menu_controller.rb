@@ -12,9 +12,14 @@ class MenuController < ApplicationController
   def update
     menu_id = params[:id]
     name = params[:name]
-    price = params[:price]
-    description = params[:description]
-    MenuItem.create!(menu_id: menu_id, name: name, price: price, description: description)
+    menu = Menu.find(menu_id)
+    menu.update(name: name)
+    menu.save!
     redirect_to menu_path
+  end
+
+  def destroy
+    Menu.delete_menu(params[:id])
+    redirect_to cafe_index_path
   end
 end

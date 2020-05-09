@@ -1,0 +1,30 @@
+<section class = "OrderPage">
+
+  <h2 class = "OrderPage-Title"> Pending Orders: </h3>
+
+  <%if @pending_orders == nil || @pending_orders == [] %>
+    <section class = "Orderpage-Content">
+      <p class = "Orderpage-ContentText"> No Pending Orders </p>
+    </section>
+  <% else %>
+    <table class = "Orders">
+
+      <tr class = "Order">
+        <th class = "Order-Head"> Order Id </th>
+        <th class = "Order-Head"> User </th>
+        <th class = "Order-Head"> Order Date & Time </th>
+      </tr>
+
+      <% @pending_orders.each do |order|%>
+        <tr class = "Order">
+          <td class = "Order-Id"> <%= order.id %> </td>
+          <td class = "User"> <%= User.find(order.user_id).name %> </td>
+          <td class = "Order-Timestamp"> <%= order.date.strftime("%B %e, %Y at %I:%M %p") %> </td>
+          <td class = "Order-View"> <%= link_to "view", order_path(order.id), class: "OrderView-link" %> </td>
+        </tr>
+      <% end %>
+
+    </table>
+  <% end  %>
+
+</section>
