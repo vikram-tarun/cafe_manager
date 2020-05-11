@@ -18,6 +18,11 @@
           <%= button_to("Home", "/", class: "Home-Button", method: "get") %>
 
           <% if @current_user.role == "owner" || @current_user.role == "billing clerk"%>
+            <% if @current_user.role == "owner"%>
+              <section class = "NonUserSection">
+                <%= button_to("Users", "/users", method: "get", class: "Users-Button") %>
+              </section>
+            <% end %>
             <section class = "NonUserSection">
               <%= button_to("Pending Orders", "/order", method: "get", class: "PendingOrder-Button") %>
             </section>
