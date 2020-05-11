@@ -33,7 +33,7 @@
             <%= submit_tag "Add to Cart", class: "AddToCart-Button"%>
           <% end %>
         <% else %>
-          <%= button_to("Remove from Cart",  "/menu_items/#{@menu_item.id}/cart", method: "delete", class: "RemoveFromCart-Button") %>
+          <%= button_to("Remove from Cart", "/menu_items/#{@menu_item.id}/cart", method: "delete", class: "RemoveFromCart-Button") %>
         <% end %>
       </section>
 

@@ -36,7 +36,7 @@
 
   <section class = "ActiveMenuSection">
 
-    <% if @user_role == "user" %>
+    <% if @current_user.role == "customer" || @current_user.role == "billing clerk" %>
       <h2 class = "ActiveMenu-Title"> Items Available: </h2>
     <% else %>
       <h2 class = "ActiveMenu-Title"> Active Menu: </h2>
@@ -71,7 +71,7 @@
 
   <section class = "CartSection">
 
-    <% if @user_role == "user" %>
+    <% if @user_role == "customer" %>
       <h2 class = "CartSection-Title"> My Cart: </h2>
     <% else %>
       <h2 class = "CartSection-Title"> Walk-In Customer Cart: </h2>

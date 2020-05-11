@@ -51,3 +51,10 @@
   width: 72px;
   margin-left: 110px;
 }
+
+.UsersPage {
+  width: fit-content;
+  margin: 30px auto;
+  display: flex;
+  align-items: stretch;
+}

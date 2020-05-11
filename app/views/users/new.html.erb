@@ -13,6 +13,8 @@
       <p class = "Credentials">Password: </p>
       <%= form.password_field :password, class: "Credentials-field"%>
 
+      <%= hidden_field_tag 'role', 'customer' %>
+
       <%= form.submit "Signup", class: "Credentials-submit" %>
 
     <% end %>

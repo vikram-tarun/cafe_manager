@@ -1,28 +1,31 @@
-<section class = "MyOrderPage">
+<section class = "AlterClerkPage ">
+  <section class = "Alter-Clerk-Head">
 
-  <h2 class = "MyOrderPage-Title"> My Orders: </h3>
+    <h2 class = "AlterClerkPageTitle"> Clerk name:  </h2>
+    <h3 class = "AlterClerkPage-Name"> <%= @user.name %> </h3>
 
-  <%if @orders == nil || @pending_orders == [] %>
-    <p class = MyOrderpage-content> No Orders </p>
-  <% else %>
-    <table class = "Orders">
+  </section>
+  <section class = "Alter-Clerk-Section">
+      <h3 class = "Alter-Clerk-Title">Update Billing Clerk: </h3>
 
-      <tr class = "Order">
-        <th class = "Order-Head"> Order Id </th>
-        <th class = "Order-Head"> Order Date & Time </th>
-        <th class = "Order-Head"> Delivery Status </th>
-      </tr>
+      <%= form_with(url: "/users/#{@user.id}", method: "put", class: "Alter-Clerk") do |form|%>
+        <p class = "Alter-Clerk-Tag">Change Name: </p>
+        <section class = "Alter-Clerk-Details">
+          <%= form.text_field :name, class: "AlterName-field", placeholder: "Name of the Clerk" %>
+          <%= submit_tag "Change", class: "Alter-Clerk-Button"%>
+        </section>
 
-      <% @orders.each do |order|%>
-        <tr class = "Order">
-          <td class = "Order-Id"> <%= order.id %> </td>
-          <td class = "Order-Timestamp"> <%= order.date.strftime("%B %e, %Y at %I:%M %p") %> </td>
-          <td class = "Order-DeliveryStatus"> <%= order.delivered_at == nil ? "Yet to be Delivered" : "Delivered" %> </td>
-          <td class = "Order-View"> <%= link_to "view", order_path(order.id), class: "OrderView-link" %> </td>
-        </tr>
+        <p class = "Alter-Clerk-Tag">Change Password: </p>
+        <section class = "Alter-Clerk-Details">
+          <%= form.password_field :password, class: "AlterPassword-field", placeholder: "Password"%>
+          <%= submit_tag "Change", class: "Alter-Clerk-Button"%>
+        </section>
       <% end %>
+  </section>
 
-    </table>
-  <% end  %>
+  <section class = "Remove-Clerk-Section">
+    <h2 class = "Remove-Clerk-Title"> Remove Billing Clerk: </h2>
+    <%= button_to("Remove Clerk", "/users/#{@user.id}", method: "delete", class: "RemoveClerk-Button")%>
+  </section>
 
 </section>

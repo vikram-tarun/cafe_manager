@@ -1,0 +1,69 @@
+<section class = "UsersPage">
+  <section class = "Add-Clerk">
+    <h2 class = "Add-Clerk-Title"> Add Billing Clerk: </h2>
+
+    <section class = "Add-Clerk-Section">
+      <%= form_with url: users_path do |form| %>
+
+        <h3 class = "Add-Clerk-Name">Name: </h3>
+        <%= form.text_field :name, class: "Name-field"%>
+
+        <h3 class = "Add-Clerk-Password">Password: </h3>
+        <%= form.password_field :password, class: "Password-field"%>
+
+        <%= hidden_field_tag 'role', 'billing clerk' %>
+
+        <%= form.submit "Add Clerk", class: "AddClerk-Button" %>
+      <% end %>
+    </section>
+  </section>
+
+  <section class = "BillingClerks">
+    <h2 class = "BillingClerks-Title"> Billing Clerks: </h3>
+
+    <%if @billing_clerks == nil || @billing_clerks == [] %>
+      <p class = BillingClerks-content> No Billing Clerks </p>
+    <% else %>
+      <table class = "BillingClerks-List">
+
+        <tr class = "Clerk">
+          <th class = "Clerk-Head"> User Id </th>
+          <th class = "Clerk-Head"> Name </th>
+        </tr>
+
+        <% @billing_clerks.each do |clerk|%>
+          <tr class = "Clerk">
+            <td class = "Clerk-Id"> <%= clerk.id %> </td>
+            <td class = "Clerk-Name"> <%= clerk.name %> </td>
+            <td class = "Clerk-View"> <%= link_to "view", user_path(clerk.id), class: "ClerkView-link" %>
+          </tr>
+        <% end %>
+
+      </table>
+    <% end  %>
+  </section>
+
+  <section class = "Customers">
+    <h2 class = "Customers-Title"> Customers: </h3>
+
+    <%if @customers == nil || @customers == [] %>
+      <p class = Customers-content> No Customers </p>
+    <% else %>
+      <table class = "Customers-List">
+
+        <tr class = "Customer">
+          <th class = "Customer-Head"> User Id </th>
+          <th class = "Customer-Head"> Name </th>
+        </tr>
+
+        <% @customers.each do |customer|%>
+          <tr class = "Customer">
+            <td class = "Customer-Id"> <%= customer.id %> </td>
+            <td class = "Customer-Name"> <%= customer.name %> </td>
+          </tr>
+        <% end %>
+
+      </table>
+    <% end  %>
+  </section>
+</section>

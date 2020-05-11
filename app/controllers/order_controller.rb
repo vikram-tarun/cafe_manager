@@ -2,14 +2,19 @@ class OrderController < ApplicationController
   skip_before_action :ensure_owner_logged_in
 
   def index
-    @pending_orders = Order.where(delivered_at: nil).order("id")
+    @cart = session[:cart]
+    if @current_user.role == "customer"
+      @orders = Order.where("user_id = ?", @current_user.id).order("id DESC")
+    elsif @current_user.role == "owner" || @current_user.role == "billing clerk"
+      @pending_orders = Order.where(delivered_at: nil).order("id")
+    end
   end
 
   def create
     @cart = session[:cart]
-    if @current_user.role == "user"
+    if @current_user.role == "customer"
       @order = Order.place_order(@cart, @current_user.id)
-    else
+    elsif @current_user.role == "owner" || @current_user.role == "billing clerk"
       @order = Order.place_order(@cart, User.find_by(name: "Walk-In Customer").id)
     end
     session[:cart] = Hash.new
