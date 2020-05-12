@@ -1,20 +1,25 @@
+.MenuPage {
+  width: fit-content;
+  margin: 0 auto;
+}
+
 .MenuPage-Head {
   width: fit-content;
   display: flex;
   align-items: stretch;
-  margin: 40px auto;
+  margin: 35px auto;
 }
 
 .MenuPageTitle {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
   color: #5f3e3b;
 }
 
 .MenuPage-Name {
-  font-size: 24px;
-  margin-left: 14px;
+  font-size: 20px;
+  margin-left: 12px;
   line-height: 1.4;
 }
 
@@ -23,83 +28,82 @@
   margin: 0 auto;
   display: flex;
   align-items: stretch;
-  margin-left: 300px;
 }
 
 .MenuItemsSection,
 .AlterMenuSection {
-  margin-right: 135px;
+  margin-right: 100px;
 }
 
 .MenuItems-Head {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
   color: #5f3e3b;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .AddMenuItemsSection-Title,
 .AlterMenuSection-Title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
   color: #5f3e3b;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
 .MenuItems {
-  font-size: 17px;
+  font-size: 14px;
   text-align: left;
-  width: 360px;
+  width: 300px;
 }
 
 .Item-Head {
   font-weight: bold;
-  height: 30px;
+  height: 25px;
   border-bottom: 1px solid #5f3e3b;
   vertical-align: bottom;
-  padding-bottom: 6px;
+  padding-bottom: 2px;
 }
 
 .Item-Name {
-  height: 22px;
+  height: 25px;
   vertical-align: middle;
   width: 50%;
-  padding-left: 6px;
+  padding-left: 4px;
 }
 
 .Item-Price {
-  height: 35px;
+  height: 25px;
   vertical-align: middle;
   width: 20%;
-  padding-left: 6px;
+  padding-left: 4px;
 }
 
 .Item-Link {
-  height: 35px;
+  height: 25px;
   vertical-align: middle;
   width: 20%;
-  padding-left: 10px;
-  font-size: 16px;
+  padding-left: 8px;
+  font-size: 13px;
 }
 
 .Item-Delete {
-  height: 35px;
+  height: 25px;
   vertical-align: middle;
   text-align: center;
 }
 
 .MenuItem-deletebox {
-  width: 16px;
-  height: 20px;
+  width: 14px;
+  height: 18px;
   display: flex;
   align-items: center;
 }
 
 .AddMenuItemsSection,
 .AlterMenuSection {
-  width: 300px;
+  width: 270px;
 }
 
 .MenuItem-Addfield,
@@ -108,17 +112,17 @@
   border: 1px solid #5f3e3b;
   border-radius: 4px;
   border-style: solid;
-  width: 250px;
+  width: 200px;
   background-color: #fcf7f3;
   color: #5f3e3b;
-  font-size: 14px;
-  margin-bottom: 15px;
-  margin-left: 20px;
+  font-size: 12px;
+  margin-bottom: 12px;
+  margin-left: 15px;
 }
 
 .MenuItem-Tag,
 .AlterMenu-Tag {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
   margin-left: 10px;
@@ -130,9 +134,9 @@
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
+  font-size: 12px;
   width: 72px;
-  margin-left: 125px;
+  margin-left: 100px;
 }
 
 .RenameMenu-Button,
@@ -141,9 +145,9 @@
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
+  font-size: 12px;
   width: 72px;
-  margin-left: 118px;
+  margin-left: 100px;
 }
 
 .RenameMenu {

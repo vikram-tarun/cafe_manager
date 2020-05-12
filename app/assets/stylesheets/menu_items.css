@@ -10,7 +10,7 @@
 }
 
 .AlterMenuItemSection {
-  margin-left: 125px;
+  margin-left: 110px;
 }
 
 .MenuItemPage-Head {
@@ -23,7 +23,7 @@
 .MenuItemPage-Title,
 .MenuItemDetails-Title,
 .AlterMenuItemSection-Title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
   color: #5f3e3b;
@@ -31,22 +31,22 @@
 }
 
 .MenuItemPage-Name {
-  font-size: 24px;
-  margin-left: 10px;
+  font-size: 20px;
+  margin-left: 6px;
 }
 
 .MenuItemDetails-Tag {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
-  margin-bottom: 12px;
-  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-left: 8px;
   color: #5f3e3b;
 }
 
 .MenuItemDetails-Item {
   display: flex;
   align-items: baseline;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .MenuItemDetails-Buttons {
@@ -58,8 +58,8 @@
 }
 
 .MenuItemDetails-Data {
-  margin-left: 10px;
-  font-size: 18px;
+  margin-left: 6px;
+  font-size: 14px;
 }
 
 .CartAdd-Dropdown {
@@ -67,7 +67,7 @@
   border-radius: 4px;
   border: 1px solid #5f3e3b;
   color: #fcf7f3;
-  font-size: 14px;
+  font-size: 12px;
   margin-right: 10px;
   width: 50px;
 }
@@ -86,7 +86,7 @@
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .AlterMenuItem-Item {
@@ -96,9 +96,9 @@
 }
 
 .AlterMenuItem-Tag {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
-  margin-left: 10px;
+  margin-left: 6px;
   margin-bottom: 10px;
   color: #5f3e3b;
 }
@@ -108,11 +108,11 @@
   border: 1px solid #5f3e3b;
   border-radius: 4px;
   border-style: solid;
-  width: 250px;
+  width: 200px;
   background-color: #fcf7f3;
   color: #5f3e3b;
-  font-size: 14px;
-  margin-left: 20px;
+  font-size: 12px;
+  margin-left: 15px;
 }
 
 .AlterMenuItem-Button {
@@ -120,8 +120,8 @@
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
-  width: 72px;
+  font-size: 12px;
+  width: 60px;
   margin-left: 10px;
 }
 
@@ -130,8 +130,7 @@
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
+  font-size: 13px;
   width: 72px;
-  margin-left: 150px;
-  margin-top: 10px;
+  margin-left: 120px;
 }

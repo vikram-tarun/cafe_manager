@@ -1,9 +1,9 @@
 body {
   font-family: sans-serif;
+  font-size: 14px;
   color: #5c4033;
   margin: 0 auto;
-  margin-top: 10px;
-  padding: 20px;
+  padding: 15px;
   background-color: #fcf7f3;
 }
 
@@ -16,9 +16,9 @@ body {
   display: flex;
   align-items: stretch;
   position: absolute;
-  right: 10px;
+  right: 6px;
   width: fit-content;
-  padding: 10px;
+  padding: 6px;
 }
 
 .MyOrders-Button,
@@ -30,25 +30,25 @@ body {
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
+  font-size: 10px;
 }
 
 .MyOrders-Button,
 .PendingOrder-Button,
 .Home-Button,
 .Users-Button {
-  margin-right: 6px;
+  margin-right: 4px;
 }
 
 .CafeMainPage {
   width: fit-content;
-  margin: 80px auto;
+  margin: 60px auto;
   display: flex;
   align-items: stretch;
 }
 
 .CafePageTitle {
-  font-size: 60px;
+  font-size: 48px;
   font-weight: 600;
   line-height: 1.6;
   width: fit-content;
@@ -57,29 +57,32 @@ body {
   color: #4b3331;
 }
 
-.ActiveMenuSection,
+.ActiveMenuSection {
+  margin-right: 80px;
+}
 .AddMenuSection {
-  margin-right: 125px;
+  margin-right: 100px;
 }
 
 .ActiveMenu-Dropdown {
-  margin-top: 6px;
-  margin-bottom: 20px;
-  margin-left: 75px;
-  height: 24px;
-  width: 150px;
+  margin-top: 4px;
+  margin-bottom: 18px;
+  margin-left: 65px;
+  height: 18px;
+  width: 130px;
+  font-size: 12px;
 }
 
 .AddMenu {
   display: flex;
   align-items: stretch;
-  height: 36px;
-  margin-bottom: 40px;
+  height: 28px;
+  margin-bottom: 30px;
 }
 
 .ActiveMenu-Title,
 .AddMenu-Title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 14px;
@@ -88,16 +91,16 @@ body {
 }
 
 .AddMenu-Name {
-  padding: 6px 12px;
+  padding: 4px 10px;
   margin-right: 10px;
   margin-left: 10px;
   border: 1px solid #5f3e3b;
   border-radius: 4px;
   border-style: solid;
-  width: 250px;
+  width: 200px;
   background-color: #fcf7f3;
   color: #5f3e3b;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .AddMenu-Button {
@@ -105,54 +108,54 @@ body {
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
-  width: 72px;
+  font-size: 12px;
+  width: 60px;
 }
 
 .MenuSection-Title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
   color: #5f3e3b;
   margin-left: 4px;
 }
 
 .MenuSection-Items {
-  font-size: 17px;
+  font-size: 14px;
   text-align: left;
-  width: 360px;
+  width: 300px;
   margin-left: 10px;
 }
 
 .MenuTable-Head {
   font-weight: bold;
-  height: 30px;
+  height: 25px;
   border-bottom: 1px solid #5f3e3b;
   vertical-align: bottom;
-  padding-bottom: 6px;
+  padding-bottom: 2px;
 }
 
 .Menu-Id {
-  height: 35px;
+  height: 25px;
   vertical-align: middle;
   width: 20%;
   padding-left: 6px;
 }
 
 .Menu-Name {
-  height: 35px;
+  height: 25px;
   vertical-align: middle;
   width: 60%;
   padding-left: 6px;
 }
 
 .Menu-Link {
-  height: 35px;
+  height: 25px;
   vertical-align: middle;
   width: 60%;
   padding-left: 6px;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 a:link,
@@ -161,29 +164,41 @@ a:visited {
 }
 
 .CartSection-Title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 14px;
-  padding-left: 6px;
   color: #5f3e3b;
 }
 
 .CartItems {
-  font-size: 17px;
+  font-size: 14px;
   text-align: left;
-  width: 300px;
+  width: 270px;
+}
+
+.Item-Name {
+  height: 25px;
+  vertical-align: middle;
+  width: 50%;
 }
 
 .Item-Quantity {
-  height: 35px;
+  height: 25px;
+  vertical-align: middle;
+  width: 20%;
+  padding-left: 4px;
+}
+
+.Item-Price {
+  height: 25px;
   vertical-align: middle;
   width: 20%;
 }
 
 .CartItem-deletebox {
-  width: 16px;
-  height: 20px;
+  width: 14px;
+  height: 18px;
   display: flex;
   align-items: center;
 }
@@ -191,12 +206,12 @@ a:visited {
 .CartTotalPrice {
   display: flex;
   align-items: baseline;
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: 6px;
 }
 
 .CartTotalPrice-Head {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #5f3e3b;
@@ -204,7 +219,7 @@ a:visited {
 
 .CartTotalPrice-Price {
   margin-left: 6px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .PlaceOrder-Button {
@@ -212,6 +227,6 @@ a:visited {
   border-radius: 4px;
   border-color: transparent;
   color: #fcf7f3;
-  font-size: 14px;
+  font-size: 12px;
   margin-left: 100px;
 }
