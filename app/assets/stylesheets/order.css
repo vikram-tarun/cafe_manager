@@ -28,11 +28,13 @@
   margin-bottom: 0px;
 }
 
-.Orderpage-Content {
-  width: 500px;
+.Orderpage-Content,
+.MyOrderpage-content {
+  width: 400px;
 }
 
-.Orderpage-ContentText {
+.Orderpage-ContentText,
+.MyOrderpage-content {
   font-size: 17px;
   margin-left: 100px;
 }
