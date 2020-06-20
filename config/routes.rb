@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :menu
   resources :order
   resources :users
+  resources :invoices
 end
