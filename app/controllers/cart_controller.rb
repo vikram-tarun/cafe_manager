@@ -4,8 +4,13 @@ class CartController < ApplicationController
   def add
     item_id = params[:id].to_i
     quantity = params[:quantity].to_i
-    session[:cart].store(item_id, [MenuItem.find(item_id), quantity])
-    redirect_to cafe_index_path
+    unless quantity == 0
+      session[:cart].store(item_id, [MenuItem.find(item_id), quantity])
+      redirect_to cafe_index_path
+    else
+      flash[:notice] = "Quantity should be mentioned."
+      redirect_to menu_item_path(item_id)
+    end
   end
 
   def remove

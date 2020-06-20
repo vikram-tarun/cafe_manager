@@ -1,4 +1,5 @@
 class Menu < ApplicationRecord
+  validates :name, length: { minimum: 2 }
   has_many :menu_items
 
   def self.set_active_menu(menu_id)

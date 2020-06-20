@@ -3,6 +3,7 @@
     <h2 class = "Add-Clerk-Title"> Add Billing Clerk: </h2>
 
     <section class = "Add-Clerk-Section">
+      <p class = "ErrorMessage"> <%= flash[:error] %> </p>
       <%= form_with url: users_path do |form| %>
 
         <h3 class = "Add-Clerk-Name">Name: </h3>

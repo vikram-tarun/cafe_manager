@@ -11,6 +11,7 @@
 
       <h3 class = "MenuItemDetails-Title"> Details: </h3>
 
+      <p class = "ErrorMessage"> <%= flash[:notice] %> </p>
       <section class = "MenuItemDetails-Item">
         <p class = "MenuItemDetails-Tag">Name: </p>
         <p class = "MenuItemDetails-Data"> <%= @menu_item.name %> </p>
@@ -44,6 +45,7 @@
 
         <h3 class = "AlterMenuItemSection-Title"> Alter MenuItem: </h3>
 
+        <p class = "ErrorMessage"> <%= flash[:error] %> </p>
         <%= form_with(url: "/menu_items/#{@menu_item.id}", method: "put", class: "RenameMenuItem") do |form|%>
           <p class = "AlterMenuItem-Tag">Change Name: </p>
           <section class = "AlterMenuItem-Item">

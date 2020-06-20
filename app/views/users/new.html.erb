@@ -5,6 +5,7 @@
   </div>
 
   <div class = "UserSignUp-Credentials">
+    <p class = "ErrorMessage-Main"> <%= flash[:error] %> </p>
     <%= form_with url: users_path do |form| %>
 
       <p class = "Credentials">Name: </p>

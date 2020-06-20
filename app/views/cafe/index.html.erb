@@ -4,6 +4,8 @@
 
       <h2 class = "AddMenu-Title"> Add Menus: </h2>
 
+      <p class = "ErrorMessage"> <%= flash[:error] %> </p>
+
       <%= form_with(url: "/menu", method: "post", class: "AddMenu") do %>
         <%= text_field_tag 'name', nil, class: "AddMenu-Name", placeholder: "Name of the menu" %>
         <%= submit_tag "Add", class: "AddMenu-Button"%>
@@ -76,7 +78,7 @@
     <% else %>
       <h2 class = "CartSection-Title"> Walk-In Customer Cart: </h2>
     <% end %>
-
+    <p class = "ErrorMessage"> <%= flash[:notice] %> </p>
     <table class = "CartItems">
 
       <tr class = "CartItem">

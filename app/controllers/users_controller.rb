@@ -15,13 +15,22 @@ class UsersController < ApplicationController
     name = params[:name]
     password = params[:password]
     role = params[:role]
-    user = User.create!(name: name, password: password, role: role)
-    if role == "customer"
-      session[:current_user_id] = user.id
-      session[:cart] = Hash.new
-      redirect_to "/"
-    elsif role == "billing clerk"
-      redirect_back(fallback_location: users_path)
+    user = User.new(name: name, password: password, role: role)
+    if user.save
+      if role == "customer"
+        session[:current_user_id] = user.id
+        session[:cart] = Hash.new
+        redirect_to "/"
+      elsif role == "billing clerk"
+        redirect_back(fallback_location: users_path)
+      end
+    else
+      flash[:error] = user.errors.full_messages.join(", ")
+      if role == "billing clerk"
+        redirect_back(fallback_location: users_path)
+      else
+        redirect_to new_user_path
+      end
     end
   end
 

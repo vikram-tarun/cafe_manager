@@ -13,15 +13,20 @@ class MenuItemsController < ApplicationController
     name = params[:name]
     price = params[:price]
     description = params[:description]
-    MenuItem.create!(menu_id: menu_id, name: name, price: price, description: description)
-    redirect_to menu_path(menu_id)
+    new_menu_item = MenuItem.new(menu_id: menu_id, name: name, price: price, description: description)
+    if new_menu_item.save
+      redirect_to menu_item_path(new_menu_item.id)
+    else
+      flash[:error] = new_menu_item.errors.full_messages.join(", ")
+      redirect_to menu_path(menu_id)
+    end
   end
 
   def update
     ensure_owner_logged_in and return
     h = { "id" => params[:id], "name" => params[:name], "price" => params[:price], "description" => params[:description] }
     MenuItem.updateitem(h)
-    redirect_to menu_item_path
+    redirect_to menu_item_path(params[:id])
   end
 
   def destroy

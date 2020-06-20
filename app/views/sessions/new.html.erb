@@ -7,6 +7,7 @@
   <div class = "UserSignIn-Credentials">
     <%= form_with url: sessions_path do |form| %>
 
+      <p class = "ErrorMessage-Main"> <%= flash[:error] %> </p>
       <p class = "Credentials">Name: </p>
       <%= form.text_field :name, class: "Credentials-field"%>
 

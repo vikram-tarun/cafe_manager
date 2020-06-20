@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :name, length: { minimum: 2 }
+  validates :password, length: { minimum: 8 }
   has_secure_password
   has_many :orders
 

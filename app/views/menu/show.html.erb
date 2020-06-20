@@ -13,6 +13,7 @@
       <h3 class = "AlterMenuSection-Title"> Alter Menu: </h3>
 
       <p class = "AlterMenu-Tag">Rename Menu: </p>
+      <p class = "ErrorMessage"> <%= flash[:notice] %> </p>
       <%= form_with(url: "/menu/#{@menu.id}", method: "put", class: "RenameMenu") do %>
         <%= text_field_tag 'name', nil, class: "RenameMenu-Name", placeholder: "Name of the menu" %>
         <%= submit_tag "Rename", class: "RenameMenu-Button"%>
@@ -55,6 +56,7 @@
 
       <h3 class = "AddMenuItemsSection-Title"> Add Menu Items: </h3>
 
+      <p class = "ErrorMessage"> <%= flash[:error] %> </p>
       <%= form_with( url: "/menu_items", method: "post") do |form| %>
 
         <%= hidden_field_tag "menu_id", "#{@menu.id}"%>

@@ -12,13 +12,18 @@ class OrderController < ApplicationController
 
   def create
     @cart = session[:cart]
-    if @current_user.role == "customer"
-      @order = Order.place_order(@cart, @current_user.id)
-    elsif @current_user.role == "owner" || @current_user.role == "billing clerk"
-      @order = Order.place_order(@cart, User.find_by(name: "Walk-In Customer").id)
+    unless @cart.empty?
+      if @current_user.role == "customer"
+        @order = Order.place_order(@cart, @current_user.id)
+      elsif @current_user.role == "owner" || @current_user.role == "billing clerk"
+        @order = Order.place_order(@cart, User.find_by(name: "Walk-In Customer").id)
+      end
+      session[:cart] = Hash.new
+      redirect_to order_path(@order.id)
+    else
+      flash[:notice] = "Cart is Empty..!!"
+      redirect_to cafe_index_path
     end
-    session[:cart] = Hash.new
-    redirect_to order_path(@order.id)
   end
 
   def show

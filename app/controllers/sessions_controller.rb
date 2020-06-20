@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
       session[:cart] = Hash.new
       redirect_to "/"
     else
-      render plain: "Credentials Incorrect!"
+      flash[:error] = "Credentials Incorrect. Please try again."
+      redirect_to "/signin"
     end
   end
 
