@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   post "/menu_items/:id/cart" => "cart#add", as: :cart_add_item
   delete "/menu_items/:id/cart" => "cart#remove", as: :cart_remove_item
 
+  get "/invoices" => "invoices#list", as: :invoices_list
+  get "/invoices/users/:id" => "invoices#users_list", as: :invoices_users
+
   resources :cafe
   resources :menu_items
   resources :menu
   resources :order
   resources :users
-  resources :invoices
 end

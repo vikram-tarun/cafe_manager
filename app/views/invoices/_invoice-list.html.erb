@@ -1,0 +1,50 @@
+<section class = "DateSection">
+  <h2 class = "Invoices-Title"> Date Range: </h2>
+  <%= form_with(url: path, method: "get", class: "ListInvoices") do |form|%>
+
+    <p class = "ErrorMessage"> <%= flash[:error] %> </p>
+    <section class = "StartDate">
+      <p class = "StartDate-Tag"> Start Date: </p>
+      <%= date_field_tag "start_date", nil, class: "StartDate-Date" %>
+    </section>
+
+    <section class = "EndDate">
+      <p class = "EndDate-Tag"> End Date: </p>
+      <%= date_field_tag "end_date", nil, class: "EndDate-Date" %>
+    </section>
+
+    <%= button_tag "List", class: "ListInvoices-Button", onclick: "this.form.submit()"%>
+  <% end %>
+</section>
+
+<section class = "InvoicesSection">
+  <p class = "InvoiceList-Tag"> List of Invoices: </p>
+  <%if list == nil || list == [] %>
+    <section class = "Orderpage-Content">
+      <p class = "Orderpage-ContentText"> No Invoices in the given range </p>
+    </section>
+  <% else %>
+    <table class = "Orders">
+
+      <tr class = "Order">
+        <th class = "Order-Head"> Order Id </th>
+        <th class = "Order-Head"> User </th>
+        <th class = "Order-Head"> Order Date & Time </th>
+        <th class = "Order-Head"> Total Price </th>
+        <th class = "Order-Head"> Delivery Status </th>
+      </tr>
+
+      <% list.each do |order|%>
+        <tr class = "Order">
+          <td class = "Order-Id"> <%= order.id %> </td>
+          <td class = "User"> <%= User.find(order.user_id).name %> </td>
+          <td class = "Order-Timestamp"> <%= order.date.strftime("%B %e, %Y at %I:%M %p") %> </td>
+          <td class = "Order-TotalPrice"> Rs. <%= order.total_amount%> /- </td>
+          <td class = "Order-DeliveryStatus"> <%= order.delivered_at == nil ? "Yet to be Delivered" : "Delivered" %> </td>
+          <td class = "Order-View"> <%= link_to "view", order_path(order.id), class: "OrderView-link" %> </td>
+        </tr>
+      <% end %>
+
+    </table>
+  <% end %>
+</section>

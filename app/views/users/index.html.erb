@@ -7,10 +7,10 @@
       <%= form_with url: users_path do |form| %>
 
         <h3 class = "Add-Clerk-Name">Name: </h3>
-        <%= form.text_field :name, class: "Name-field"%>
+        <%= form.text_field :name, class: "Name-field", placeholder: "Name of the Clerk" %>
 
         <h3 class = "Add-Clerk-Password">Password: </h3>
-        <%= form.password_field :password, class: "Password-field"%>
+        <%= form.password_field :password, class: "Password-field", placeholder: "Password"%>
 
         <%= hidden_field_tag 'role', 'billing clerk' %>
 
@@ -61,6 +61,7 @@
           <tr class = "Customer">
             <td class = "Customer-Id"> <%= customer.id %> </td>
             <td class = "Customer-Name"> <%= customer.name %> </td>
+            <td class = "Clerk-View"> <%= link_to "view", "invoices/users/#{customer.id}", class: "ClerkView-link" %>
           </tr>
         <% end %>
 

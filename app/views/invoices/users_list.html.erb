@@ -1,0 +1,8 @@
+<section class = "UserName-Head">
+  <h2 class = "UserName-Title"> User name:  </h2>
+  <h3 class = "UserName-Name"> <%= @user_name %> </h3>
+</section>
+
+<section class = "InvoicesPage">
+  <%= render partial: "invoice-list", locals: { list: @list, path: invoices_users_path } %>
+</section>
